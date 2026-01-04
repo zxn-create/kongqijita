@@ -1,0 +1,17 @@
+opencv-python
+mediapipe
+numpy
+pygame
+PyOpenGL
+PyOpenGL-accelerate
+pygame-gui
+pywavefront
+pyaudio
+librosa
+soundfile
+pyyaml
+matplotlib
+scipy
+pillow
+streamlit
+plotly

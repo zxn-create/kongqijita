@@ -1,0 +1,54 @@
+# 手势识别配置
+hand_tracking:
+  model_complexity: 1
+  min_detection_confidence: 0.7
+  min_tracking_confidence: 0.7
+  max_num_hands: 2
+  use_gesture_recognizer: true
+  gesture_model_path: models/gesture_recognizer.task
+
+# 吉他配置
+guitar:
+  strings: 6
+  frets: 20
+  tuning: ["E2", "A", "D", "G", "B", "E4"]
+  string_colors: [[255, 0, 0], [255, 165, 0], [255, 255, 0], [0, 255, 0], [0, 0, 255], [128, 0, 128]]
+
+# 音频配置
+audio:
+  sample_rate: 44100
+  channels: 2
+  buffer_size: 1024
+  volume: 0.7
+  # 音量手势控制阈值
+  vol_min_move: 0.02
+  vol_max_move: 0.12
+  vol_step: 0.03
+
+# 3D渲染配置
+rendering:
+  window_width: 1280
+  window_height: 720
+  background_color: [0.1, 0.1, 0.1, 1.0]
+  particle_count: 1000
+
+# 和弦定义
+chords:
+  C_major:
+    fingers: [0, 1, 0, 2, 3, 0]
+    strings: [0, 1, 2, 3, 4, 5]
+  G_major:
+    fingers: [3, 2, 0, 0, 0, 3]
+    strings: [0, 1, 2, 3, 4, 5]
+  D_major:
+    fingers: [2, 3, 2, 0, 0, 0]
+    strings: [0, 1, 2, 3, 4, 5]
+  A_minor:
+    fingers: [0, 1, 2, 2, 0, 0]
+    strings: [0, 1, 2, 3, 4, 5]
+  E_minor:
+    fingers: [0, 2, 2, 0, 0, 0]
+    strings: [0, 1, 2, 3, 4, 5]
+  F_major:
+    fingers: [1, 1, 2, 3, 3, 1]
+    strings: [0, 1, 2, 3, 4, 5]

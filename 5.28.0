@@ -1,0 +1,5 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple/
+Collecting protobuf
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/a6/79/8780a378c650e3df849b73de8b13cf5412f521ca2ff9b78a45c247029440/protobuf-6.33.1-cp310-abi3-win_amd64.whl (436 kB)
+Installing collected packages: protobuf
+Successfully installed protobuf-6.33.1
