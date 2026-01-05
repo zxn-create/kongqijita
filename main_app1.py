@@ -8,7 +8,7 @@ import os
 import random
 from typing import Dict, Any
 from PIL import Image, ImageDraw, ImageFont
-from guitar_3d_engine import Guitar3DEngine
+
 
 # 修改后：
 try:
@@ -22,7 +22,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from hand_tracker1 import HandTracker  # 修改为 hand_tracker1
 from gesture_analyzer1 import GestureAnalyzer  # 修改为 gesture_analyzer1
-from guitar_3d_engine import Guitar3DEngine
 from audio_system import AudioSystem
 import utils
 
