@@ -9,19 +9,15 @@ import random
 from typing import Dict, Any
 from PIL import Image, ImageDraw, ImageFont
 
+# 删除对 OpenGL 的尝试导入，直接设置为不可用
+HAS_OPENGL = False
+Guitar3DEngine = None
 
-# 修改后：
-try:
-    from guitar_3d_engine import Guitar3DEngine
-    HAS_OPENGL = True
-except ImportError as e:
-    HAS_OPENGL = False
-    Guitar3DEngine = None
 # 添加当前目录到Python路径
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from hand_tracker1 import HandTracker  # 修改为 hand_tracker1
-from gesture_analyzer1 import GestureAnalyzer  # 修改为 gesture_analyzer1
+from hand_tracker1 import HandTracker
+from gesture_analyzer1 import GestureAnalyzer
 from audio_system import AudioSystem
 import utils
 
@@ -66,11 +62,13 @@ class AirGuitarApp:
             'E_minor': ['E_low', 'B', 'E_high', 'G', 'B', 'E_high'],
             'F_major': ['F', 'A', 'C', 'F']
         }
+    
     def safe_stop(self):
         """安全停止应用程序"""
         # 在 run() 方法中会释放资源，这里只是标记
         self.is_running = False
-        print("🛑 正在安全切换应用程序...") 
+        print("🛑 正在安全切换应用程序...")
+    
     def apply_custom_css(self):
         """应用自定义CSS样式"""
         st.markdown("""
@@ -282,7 +280,7 @@ class AirGuitarApp:
                 }
             }
         </style>
-        """, unsafe_allow_html=True)    
+        """, unsafe_allow_html=True)
     
     def setup_components(self):
         """设置各个组件"""
@@ -290,7 +288,7 @@ class AirGuitarApp:
             self.hand_tracker = HandTracker(self.config['hand_tracking'])
             self.gesture_analyzer = GestureAnalyzer(self.config)
             self.audio_system = AudioSystem(self.config['audio'])
-            self.guitar_3d = None
+            # 注意：这里移除了 guitar_3d 初始化
             print("✅ 所有组件初始化成功")
         except Exception as e:
             print(f"❌ 组件初始化失败: {e}")
@@ -1007,9 +1005,7 @@ class AirGuitarApp:
         """渲染侧边栏"""
         with st.sidebar:
             st.header("⚙️ 设置")
-            # 版本导航
-
-        
+            
             st.markdown("---")           
             # 音频设置
             volume = st.slider("音量", 0.0, 1.0, 0.7, key="volume")

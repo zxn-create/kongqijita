@@ -1,7 +1,7 @@
+
 import streamlit as st
 import streamlit.components.v1 as components
 import cv2
-import pygame
 import numpy as np
 import time
 import sys
@@ -23,10 +23,8 @@ try:
 except Exception:
     OUTPUT_DIR = os.path.join('assets', 'guitar_samples', 'single_notes')
 
-
     def generate_all():
         raise RuntimeError("generate_guitar_samples unavailable")
-
 
     def generate_sample_chord():
         pass
@@ -87,7 +85,8 @@ class AirGuitarApp:
             self.hand_tracker = HandTracker(self.config['hand_tracking'])
             self.gesture_analyzer = GestureAnalyzer(self.config)
             self.audio_system = AudioSystem(self.config['audio'])
-            self.guitar_3d = None
+            # 注释掉或移除对 guitar_3d 的引用
+            # self.guitar_3d = Guitar3DEngine(self.config.get('guitar_3d', {}))
             print("✅ 所有组件初始化成功")
         except Exception as e:
             print(f"❌ 组件初始化失败: {e}")
@@ -835,7 +834,7 @@ class AirGuitarApp:
                     except Exception:
                         pass
                     # 不要清空占位符（会导致页面抖动），只重置内部状态
-                    # UI 渲染逻辑会在下方稳定显示“未检测到手部”信息
+                    # UI 渲染逻辑会在下方稳定显示"未检测到手部"信息
                 # 立即响应指定手势：
                 # - 右手握拳 -> 开始播放当前弦/品（若可用）
                 # - 双手握拳 -> 结束/停止所有
