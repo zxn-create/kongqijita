@@ -9,7 +9,16 @@ import os
 from typing import Dict, Any
 from collections import deque
 
+from guitar_3d_engine import Guitar3DEngine
 
+# 修改后：
+try:
+    from guitar_3d_engine import Guitar3DEngine
+    HAS_OPENGL = True
+except ImportError as e:
+    print(f"⚠️ OpenGL 不可用，禁用 3D 引擎: {e}")
+    HAS_OPENGL = False
+    Guitar3DEngine = None
 # 添加当前目录到Python路径
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from hand_tracker import HandTracker

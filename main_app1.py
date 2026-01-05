@@ -8,7 +8,15 @@ import os
 import random
 from typing import Dict, Any
 from PIL import Image, ImageDraw, ImageFont
+from guitar_3d_engine import Guitar3DEngine
 
+# 修改后：
+try:
+    from guitar_3d_engine import Guitar3DEngine
+    HAS_OPENGL = True
+except ImportError as e:
+    HAS_OPENGL = False
+    Guitar3DEngine = None
 # 添加当前目录到Python路径
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
